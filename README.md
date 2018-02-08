@@ -1,15 +1,18 @@
 # @octokit/rest plugin example
 
 [`@octokit/rest`](https://github.com/octokit/rest.js) has an [experimental plugin API](https://github.com/octokit/rest.js/tree/master/lib/plugins). A plugin can
-be shared as npm module
+be shared as npm module.
 
+The [example plugin](index.js) from this repository adds a new `octokit.root()`
+method which sends a get request to the [root endpoint](https://developer.github.com/v3/#root-endpoint)
 
 ```js
-// init octokit
 const octokit = require('@octokit/rest')()
 // load plugin
-octokit.plugin(require('my-octokit-rest-plugin'))
+octokit.plugin(require('octokit-rest-plugin-example'))
 ```
+
+## How to add new methods to octokit using plugins
 
 In order to add a new method to `octokit`, a plugin can look like this
 
@@ -54,3 +57,7 @@ octokit.repos.myNewEndpoint({
 
 If there are many new endpoints it could be worth to create a [`routes.json file like @octokit/rest/lib/routes.json`](https://github.com/octokit/rest.js/blob/master/lib/routes.json)
 and then build the endpoints based on that file like the core [endpoint-methods plugin](https://github.com/octokit/rest.js/tree/master/lib/plugins/endpoint-methods).
+
+## License
+
+[MIT](LICENSE)
