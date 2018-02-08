@@ -8,8 +8,11 @@ method which sends a get request to the [root endpoint](https://developer.github
 
 ```js
 const octokit = require('@octokit/rest')()
-// load plugin
 octokit.plugin(require('octokit-rest-plugin-example'))
+
+octokit.root().then({data} => {
+  // data from response
+})
 ```
 
 ## How to add new methods to octokit using plugins
